@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta API ViaCEP</title>
+    <link rel="stylesheet" href="/static/stylesheets/style.css"> <!--{{ url_for('static', filename='stylesheets/style.css') }}-->
+</head>
+<body>
+    <section>
+        <div class="cabecalho">
+            <h1>Consulte seu CEP</h1>
+            <img id="icone"src="/static/img/location.png" alt="icone de localização">
+        </div>
+        <fieldset>
+            <form method="POST">
+                <p>Digite o cep que deseja consultar as informações: </p>
+                <label for="cep"></label>
+                <input type="text" id="cep" name="cep" autocomplete="off" placeholder="Digite o cep...">
+                <label id="erro"> {{erro}} </label><i class="fa-solid fa-sidebar-flip"></i>
+            </form>
+        </fieldset>
+        <fieldset>
+            <p><label for="logradouro">Logradouro: </label> <input  type="text" id="logradouro" name="logradouro" 
+                {% if req is not defined %} 
+                    value="" 
+                {% else %} 
+                    value="{{req.get('logradouro')}}"
+                {% endif %}></p>
+            <p><label for="complemento">Complemento: </label> <input  type="text" id="complemento" name="complemento" 
+                {% if req is not defined %} 
+                    value="" 
+                {% else %} 
+                    value="{{req.get('complemento')}}"
+                {% endif %} ></p>
+            <p><label for="bairro">Bairro: </label> <input  type="text" id="bairro" name="bairro" 
+                {% if req is not defined %} 
+                    value="" 
+                {% else %} 
+                    value="{{req.get('bairro')}}"
+                {% endif %}></p>
+            <p><label for="localidade">Localidade: </label> <input  type="text" id="localidade" name="localidade" 
+                {% if req is not defined %} 
+                    value="" 
+                {% else %} 
+                    value="{{req.get('localidade')}}"
+                {% endif %}></p>
+            <p><label for="uf">UF: </label> <input  type="text" id="uf" name="uf" 
+                {% if req is not defined %} 
+                    value="" 
+                {% else %} 
+                    value="{{req.get('uf')}}"
+                {% endif %}></p>
+            <p><label for="ddd">DDD: </label> <input  type="text" id="ddd" name="ddd" 
+                {% if req is not defined %} 
+                    value="" 
+                {% else %} 
+                    value="{{req.get('ddd')}}"
+                {% endif %}></p>
+        </fieldset>
+    </section>
+</body>
+</html>
